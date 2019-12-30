@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+    <title>Book Description</title>
+    {% endblock %}
+{% block content %}
+
+
+	<div class="row">
+        <div class="col-md-2">
+			<img src="{{ individual_set.upload_image.url }} "height="150" class="img-responsive center-block" width="170"/> 
+			<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+		{% if not request.user.is_authenticated %}
+				<br><a button type="button" class="btn btn-sm btn-info" href="{% url 'auth_login' %}" >Add to cart <i class="fa fa-plus"></i></a>
+			{% else %}
+				<br><a button type="button" class="btn btn-sm btn-info" href="{% url 'mycart' individual_set.id %}" >Add to cart <i class="fa fa-plus"></i></a>
+			{% endif %}
+			</div> </div>
+		</div>
+		<div class="col-md-8">
+			<p>
+				
+			    <h4><b>{{individual_set.book_name}}</b></h4>
+				Author: <b>{{individual_set.author}} </b><br><br>
+				Genre: <b>{{individual_set.genre}} </b><br><br>
+				Price: <b>NRs {{individual_set.price}}</b><br><br>
+				
+				Date Added: <b>{{individual_set.date_added}}</b><br><br>
+				Publication Date: <b>{{individual_set.pub_date}}</b><br><br>
+				Description: {{individual_set.book_description}}</h3><br>
+				
+				<br><a href="{{individual_set.details}}" button type="button" class="btn btn-sm btn-success">Read Preview </a>
+					
+		
+	</div>
+</div>
+
+
+{% endblock %} 

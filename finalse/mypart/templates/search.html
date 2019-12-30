@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Search Result</title>
+    {% endblock %}
+{% block content %}
+
+{% if queryset.count == 0 %}
+<h4>Sorry! No such book found. Please be more specific. </h4>
+{% else %}
+{% for instance in queryset %}
+	<div class="row">
+		<div class="col-sm-4">
+			<a href="{% url 'individual' instance.id %}"><img src="{{ instance.upload_image.url }}" height="150" class="img-responsive center-block" width="150" padding="5" /></a> <br><br>
+			
+		</div>
+		<div class="col-sm-8">
+			<p>
+				<h2>{{instance.book_name}}</h2> <br>
+				Author: {{instance.author}}<br>
+				Price: NRs.{{instance.price}}<br>
+				{{instance.book_description}}<br>
+			</p>
+			<p><a button type="button" class="btn btn-sm btn-success" role="button" href="{% url 'individual' instance.id %}">View <i class="fa fa-eye"></i></a></p>			
+
+		</div><br>
+
+</div>
+
+{% endfor %}
+{% endif %}
+{% endblock%}

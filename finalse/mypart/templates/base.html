@@ -1,0 +1,110 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    
+    {% block title %}
+    <title>Welcome to the book store</title>
+    {% endblock %}
+
+  {% include 'head_css.html' %}
+
+</head>
+
+<style >
+  .container{
+    min-height: 1000px;
+  }
+</style>
+
+
+<body>
+<!--header starts-->  
+<div class="bddy">
+<div class="header" >
+          <div class="search-form">
+                <form  method="GET" action="" >
+                  <input type="text" placeholder="authors , book names ,etc" size="60" name="query" value="{{request.GET.query}}" >
+                  <!--input type="submit" value=""-->
+                  <button class="btn btn-info" type="submit">SEARCH</button>                               
+              </form> 
+               
+        
+</div>
+  <div class="site-name">       
+    <img src="{% static 'img/name.png' %}"class="img-responsive left-block " height= "100" width="600">
+              
+        </div>  
+        
+</div>
+  <div class="clear"></div> 
+<!--header ends-->
+<!--navbarstarts -->
+    {% include 'navbar.html' %}
+ <!--navbar ends -->   
+    <div class= "container">  
+        {% block content %} {% endblock %}
+    </div> <!-- /container -->
+
+<!--footer starts-->   
+  <div class="footer">
+    <div class="footer-nav">
+      <div class="row">
+        <div class="col-sm-4">
+          <h2>The Book Store </h2>
+           <img src="{% static 'img/logo_short.png' %}"  height="100" class="img-responsive left-block" width="50">
+          <br>
+          
+        </div>
+        <div class="col-sm-4">
+          Telephone: +abc 1234 <br> PO Box: 7333<br> <br> Kathmandu Nepal<br> email_address@tbs.com <br> 
+          <br> Know more <a href="{% url 'aboutus' %}" >About Us</a>  
+        </div>
+        
+        <div class="col-sm-4">
+          <div class="col-sm-2">
+         <a href="http://www.facebook.com"> <i class="fa fa-facebook-square fa-2x"></i> </a> </div>
+         <div class="col-sm-2">
+         <a href="http://www.facebook.com"> <i class="fa fa-youtube fa-2x"></i> </a> </div>
+         <div class="col-sm-2">
+         <a href="http://www.facebook.com"> <i class="fa fa-twitter-square fa-2x"></i> </a></div> 
+       
+        <br> <br> <br><i class="fa fa-copyright"></i> 2016 by The Book Writers <br>  All rights reserved.   
+         </div>
+
+         
+         
+  </div> </div> </div> </div>
+<!--footer ends-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script> 
+    <!--<script src="{% static 'js/bootstrap.min.js' %}"></script>-->
+  
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug--> 
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--<script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>-->
+        <script>
+    $('.carousel').carousel({
+        interval: 1000
+        animation: "slide"
+        animationLoop: false
+    })
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+    <title>My cart</title>
+    {% endblock %}
+{% block content %}
+<h3> {{user}}'s cart history </h3>
+{% for instance in queryset %}
+			<p>
+			    <b> {{forloop.counter}}.
+
+			     {{instance.m_book_name}}</b> by 
+				<b>{{instance.m_author}} </b> <br>
+				Price: <b>NRs {{instance.m_price}}</b><br>
+				Date added: <b>{{instance.date_added_to_cart}}</b><br>
+
+				{% if instance.purchased_bool %}
+					<p><h4><i>Purchased on </i> <b>{{instance.date_purchased}}<b></h4></p><br> <br>
+				{% else %}
+					<p><a button type="button" class="btn btn-xs btn-success" href="{% url 'payment_option' instance.id %} " >Purchase <i class="fa fa-plus"></i></a></p><br> <br>
+				{% endif %}
+			</p>
+{% endfor %}
+{% block pay %} {% endblock %}
+{% endblock %}

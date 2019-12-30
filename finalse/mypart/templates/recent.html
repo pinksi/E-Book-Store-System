@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Recently added</title>
+    {% endblock %}
+{% block content %}
+<div class="row">
+{% for instance in recent_set %}
+	<div class="col-md-4">
+	<img src="{{ instance.upload_image.url }}" height="150" class="img-responsive" width="100" padding="10" /><br>
+	<p>
+		<h2>{{instance.book_name}}</h2> <br>
+		Author: {{instance.author}}<br>
+		<!-- Genre: {{instance.genre}}<br> -->
+		Price: NRs.{{instance.price}}<br>
+		
+		<!-- Date Added: {{instance.date_added}}<br> -->
+		<!-- Publication Date: {{instance.pub_date}}<br> -->
+		<!-- Description: {{instance.book_description}}<br> --><br>
+
+	</p> 
+
+	<p><a button type="button" class="btn btn-sm btn-success" role="button" href="{% url 'individual' instance.id %}">View <i class="fa fa-eye"></i></a></p>
+	</div>
+{% endfor %}
+</div>
+{% endblock %}

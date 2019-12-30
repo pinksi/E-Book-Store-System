@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block title %}
+    <title>Sign in</title>
+    {% endblock %}
+{% block content%}
+<h1> {{title}} </h1>
+	<form method='POST' action='{% url "auth_login"%}'>{% csrf_token%}
+		{{form| crispy}}
+		<div class ='form-group'>
+			<input type='password' class='form-control' name ='password' placeholder='Password'/>
+			
+			<button type="submit" class="btn btn-sm btn-success" >Login</button>
+	</form>
+
+{% endblock %}

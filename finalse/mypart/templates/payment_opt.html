@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block title %}
+    <title>Payment Option</title>
+    {% endblock %}
+{% block content %} 
+<h3>Choose your Payment Option</h3><br> <br>
+
+	<li><a href="{% url 'semifinal' 1 book_to_buy.id %}">e-sewa</a></li><br>
+    <li><a href="{% url 'semifinal' 2 book_to_buy.id%}">i-pay</a></li><br>
+    <li><a href="{% url 'semifinal' 5 book_to_buy.id%}">NIB online banking system</a></li><br>
+    <li><a href="{% url 'semifinal' 4 book_to_buy.id%}">SC online banking system</a></li><br>
+
+
+<input class = 'btn btn-info' type='submit' value='Submit'/> 
+{% endblock %}
+
+
+
+
+

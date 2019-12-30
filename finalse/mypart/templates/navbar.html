@@ -1,0 +1,59 @@
+{% load staticfiles %}
+
+<style >
+  .navbar{
+    height: 10px;
+  }
+
+  .navbar-default {
+    background-image: linear-gradient(to bottom, #FFF 0px, #FFFFFF 100%);
+    background-repeat: repeat-x;
+  }
+</style>
+<nav class="navbar navbar-default navbar">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            
+            <li><a href="{% url 'showcase' %}">Home</a></li>
+            <li><a href="{% url 'recent' %}">Recently added</a></li>
+            <li><a href="{% url 'popular' %}">Most Popular</a></li>
+
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Categories <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'category' 1 %}">Science</a></li>
+                <li><a href="{% url 'category' 2 %}">Philosophy</a></li>
+                <li><a href="{% url 'category' 3 %}">Literature</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Text Books</li>
+                <li><a href="{% url 'category' 4 %}">Engineering</a></li>
+                <li><a href="{% url 'category' 5 %}">Medical</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if request.user.is_authenticated %}
+              <li><a href="{% url 'auth_logout' %} ">Logout</a></li>
+              <li><a>|</a></li>
+              <li><a href="{% url 'mycart' %}"><i class="fa fa-cart-plus"></i> My Cart</a></li>
+              <!-- <li><a href="">My Cart</a></li> -->
+            {% else %}
+              <li><a href="{% url 'registration_register' %}">Register </a></li><!-- <span class="sr-only">(current)</span> -->
+              <li><a>|</a></li>
+              <li><a href="{% url 'auth_login' %}">Login</a></li>
+            {% endif %}
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+    
+    </nav>

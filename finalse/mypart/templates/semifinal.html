@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block title %}
+    <title>Billing Record</title>
+    {% endblock %}
+{% block content %}
+<h3>Purchace Order</h3><br> <br>
+<table class = 'table'>
+	 <tr><td><b>Name of the book</b></td> <td> <b>Author</b></td> <td><b>Price</b></td><td><b>Payment Option</b></td></tr>
+	 <tr><td>{{book_to_buy.m_book_name}} </td> <td> {{book_to_buy.m_author}}</td> <td>{{book_to_buy.m_price}}</td><td>{{chosen_option.payment_option}}</td></tr>
+	 
+</table>
+
+<p><a button type="button" class="btn btn-sm btn-success" href="{% url 'final' chosen_option.id book_to_buy.id %} " >Download </a></p>				<!-- the download should begin here. required code to be written in views.final -->
+{% endblock %}
